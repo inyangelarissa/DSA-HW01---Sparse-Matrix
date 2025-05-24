@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-class SparseMatrix {
+class output {
   constructor(rows = 0, cols = 0) {
     this.rows = rows;
     this.cols = cols;
@@ -18,7 +18,7 @@ class SparseMatrix {
 
     let rows = parseInt(rowLine.slice(5));
     let cols = parseInt(colLine.slice(5));
-    const matrix = new SparseMatrix(rows, cols);
+    const matrix = new output(rows, cols);
 
     for (let i = 2; i < lines.length; i++) {
       let line = lines[i].trim();
@@ -53,7 +53,7 @@ class SparseMatrix {
       throw new Error("Matrix size mismatch for addition");
     }
 
-    const result = new SparseMatrix(this.rows, this.cols);
+    const result = new output(this.rows, this.cols);
     for (let r in this.data) {
       for (let c in this.data[r]) {
         result.setElement(+r, +c, this.getElement(+r, +c));
@@ -73,7 +73,7 @@ class SparseMatrix {
       throw new Error("Matrix size mismatch for subtraction");
     }
 
-    const result = new SparseMatrix(this.rows, this.cols);
+    const result = new output(this.rows, this.cols);
     for (let r in this.data) {
       for (let c in this.data[r]) {
         result.setElement(+r, +c, this.getElement(+r, +c));
@@ -93,7 +93,7 @@ class SparseMatrix {
       throw new Error("Matrix size mismatch for multiplication");
     }
 
-    const result = new SparseMatrix(this.rows, other.cols);
+    const result = new output(this.rows, other.cols);
     for (let i in this.data) {
       for (let k in this.data[i]) {
         if (!other.data[k]) continue;
@@ -118,4 +118,4 @@ class SparseMatrix {
   }
 }
 
-module.exports = SparseMatrix;
+module.exports = output;

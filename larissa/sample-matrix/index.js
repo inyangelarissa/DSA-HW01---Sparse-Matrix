@@ -1,5 +1,5 @@
 const readline = require('readline');
-const SparseMatrix = require('./SparseMatrix');
+const output = require('./output');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -12,20 +12,20 @@ console.log("2 - Subtraction");
 console.log("3 - Multiplication");
 
 rl.question("Enter choice (1/2/3): ", function (op) {
-  const file1 = '../../sample_inputs/matrix1.txt';
-  const file2 = '../../sample_inputs/matrix4.txt';
+  const file1 = 'larissa\sample-inputs\samplefile4.txt';  
+  const file2 = 'larissa\sample-inputs\samplefile6.txt';
 
   try {
-    const matrix1 = SparseMatrix.fromFile(file1);
-    const matrix2 = SparseMatrix.fromFile(file2);
+    const samplefile2 = output.fromFile(file1);
+    const samplefile3 = output.fromFile(file2);
 
     let result;
     if (op == '1') {
-      result = matrix1.add(matrix2);
+      result = samplefile2.add(samplefile3);
     } else if (op == '2') {
-      result = matrix1.subtract(matrix2);
+      result = samplefile2.subtract(samplefile3);
     } else if (op == '3') {
-      result = matrix1.multiply(matrix2);
+      result = samplefile2.multiply(samplefile3);
     } else {
       console.log("Invalid option");
       rl.close();
